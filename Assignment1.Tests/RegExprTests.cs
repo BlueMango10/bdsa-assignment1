@@ -50,12 +50,59 @@ namespace Assignment1.Tests
         #endregion
 
         #region Resolutions
-        public void Resolutions_one_entry_per_element(string resolutions, IEnumerable<(int width, int height)> expected)
+        [Fact]
+        public void Resolutions_1920x1080()
         {
+            // Arrange
+            var resolutions = "1920x1080";
+
             // Act
             var actual = RegExpr.Resolution(resolutions);
 
             // Assert
+            var expected = new[]{(1920, 1080)};
+            Assert.Equal(expected, actual);
+        }
+        
+        [Fact]
+        public void Resolutions_1024x768_800x600_640x480()
+        {
+            // Arrange
+            var resolutions = "1024x768, 800x600, 640x480";
+
+            // Act
+            var actual = RegExpr.Resolution(resolutions);
+
+            // Assert
+            var expected = new[]{(1024, 768), (800, 600), (640, 480)};
+            Assert.Equal(expected, actual);
+        }
+
+        [Fact]
+        public void Resolutions_320x200_320x240_800x600()
+        {
+            // Arrange
+            var resolutions = "320x200, 320x240, 800x600";
+
+            // Act
+            var actual = RegExpr.Resolution(resolutions);
+
+            // Assert
+            var expected = new[]{(320, 200), (320, 240), (800, 600)};
+            Assert.Equal(expected, actual);
+        }
+
+        [Fact]
+        public void Resolutions_1280x960()
+        {
+            // Arrange
+            var resolutions = "1280x960";
+
+            // Act
+            var actual = RegExpr.Resolution(resolutions);
+
+            // Assert
+            var expected = new[]{(1280, 960)};
             Assert.Equal(expected, actual);
         }
         #endregion
