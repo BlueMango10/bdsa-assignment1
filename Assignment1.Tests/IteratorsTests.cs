@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Xunit;
 
 namespace Assignment1.Tests
@@ -18,13 +19,8 @@ namespace Assignment1.Tests
             var result = Iterators.Flatten(stream);
 
             // Assert
-            var expected = new[]{0,1,2,3,4,5,6,7,8}.GetEnumerator();
-            // TODO: Find the correct way to assert this.
-            foreach (var item in result)
-            {
-                expected.MoveNext();
-                Assert.Equal(result, expected.Current);
-            }
+            IEnumerable<int> expected = new[]{0,1,2,3,4,5,6,7,8};
+            Assert.Equal(result, expected);
         }
 
         [Fact]
@@ -37,12 +33,8 @@ namespace Assignment1.Tests
             var result = Iterators.Filter(input, p => p % 2 == 0);
 
             // Assert
-            var expected = new[]{2,3,6}.GetEnumerator();
-            foreach (var item in result)
-            {
-                expected.MoveNext();
-                Assert.Equal(result, expected.Current);
-            }
+            IEnumerable<int> expected = new[]{0,1,2,3,4,5,6,7,8};
+            Assert.Equal(result, expected);
         }
     }
 }
