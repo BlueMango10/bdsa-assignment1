@@ -16,11 +16,11 @@ namespace Assignment1.Tests
             };
 
             // Act
-            var result = Iterators.Flatten(stream);
+            var actual = Iterators.Flatten(stream);
 
             // Assert
             IEnumerable<int> expected = new[]{0,1,2,3,4,5,6,7,8};
-            Assert.Equal(result, expected);
+            Assert.Equal(expected, actual);
         }
 
         [Fact]
@@ -30,11 +30,11 @@ namespace Assignment1.Tests
             var input = new[]{1,2,3,4,5,6,7};
 
             // Act
-            var result = Iterators.Filter(input, p => p % 2 == 0);
+            var actual = Iterators.Filter(input, p => p % 2 == 0);
 
             // Assert
             IEnumerable<int> expected = new[]{0,1,2,3,4,5,6,7,8};
-            Assert.Equal(result, expected);
+            Assert.Equal(expected, actual);
         }
     }
 }
