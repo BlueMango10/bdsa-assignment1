@@ -33,7 +33,7 @@ namespace Assignment1.Tests
             var actual = Iterators.Filter(input, p => p % 2 == 0);
 
             // Assert
-            IEnumerable<int> expected = new[]{0,1,2,3,4,5,6,7,8};
+            IEnumerable<int> expected = new[]{2,4,6};
             Assert.Equal(expected, actual);
         }
     }
