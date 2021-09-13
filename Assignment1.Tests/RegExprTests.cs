@@ -34,7 +34,7 @@ namespace Assignment1.Tests
             };
 
             var expected = new[]{
-                "Foo", "bar",
+                "Foo", "Bar",
                 "Foo", "Bar",
                 "foo", "bar",
                 "fooBar",
