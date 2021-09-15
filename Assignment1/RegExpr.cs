@@ -33,7 +33,7 @@ namespace Assignment1
 
         public static IEnumerable<string> InnerText(string html, string tag)
         {
-            var match = Regex.Match(html, $@"(?<start><{tag}.*?>)(?<inner>.*?)(?<end></{tag}>)");
+            var match = Regex.Match(html, $@"(?<start><(?<tag>{tag}).*?>)(?<inner>.*?)(?<end></\k<tag>>)");
             while (match.Value != "")
             {
                 var temp = match.Groups["inner"].Value;
