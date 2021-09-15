@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 
 namespace Assignment1
 {
@@ -7,17 +8,38 @@ namespace Assignment1
     {
         public static IEnumerable<string> SplitLine(IEnumerable<string> lines)
         {
-            throw new NotImplementedException();
+            foreach (var line in lines)
+            {
+                var match = Regex.Match(line, @"[a-zA-Z0-9]+");
+                while (match.Value != "")
+                {
+                    yield return match.Value;
+                    match = match.NextMatch();
+                }
+            }
         }
 
         public static IEnumerable<(int width, int height)> Resolution(string resolutions)
         {
-            throw new NotImplementedException();
+            var match = Regex.Match(resolutions, @"(?<width>\d+)x(?<height>\d+)");
+            while (match.Value != "")
+            {
+                var width = match.Groups["width"].Value;
+                var height = match.Groups["height"].Value;
+                yield return (int.Parse(width), int.Parse(height));
+                match = match.NextMatch();
+            }
         }
 
         public static IEnumerable<string> InnerText(string html, string tag)
         {
-            throw new NotImplementedException();
+            var match = Regex.Match(html, $@"(?<start><(?<tag>{tag}).*?>)(?<inner>.*?)(?<end></\k<tag>>)");
+            while (match.Value != "")
+            {
+                var temp = match.Groups["inner"].Value;
+                yield return Regex.Replace(temp, @"<.+?>", "");
+                match = match.NextMatch();
+            }
         }
     }
 }
