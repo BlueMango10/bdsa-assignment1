@@ -33,7 +33,12 @@ namespace Assignment1
 
         public static IEnumerable<string> InnerText(string html, string tag)
         {
-            throw new NotImplementedException();
+            var match = Regex.Match(html, $@"(?<start><{tag}.*?>)(?<inner>.*?)(?<end></{tag}>)");
+            while (match.Value != "")
+            {
+                yield return match.Groups["inner"].Value;
+                match = match.NextMatch();
+            }
         }
     }
 }
