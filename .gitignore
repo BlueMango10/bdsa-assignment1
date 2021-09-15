@@ -348,3 +348,4 @@ MigrationBackup/
 
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
+MSBuild_Logs/MSBuild_pid-18694_bb06e83c4eac4d2ea1177de533f37d2b.failure.txt

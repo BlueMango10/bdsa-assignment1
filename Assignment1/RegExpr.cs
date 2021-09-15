@@ -36,7 +36,8 @@ namespace Assignment1
             var match = Regex.Match(html, $@"(?<start><{tag}.*?>)(?<inner>.*?)(?<end></{tag}>)");
             while (match.Value != "")
             {
-                yield return match.Groups["inner"].Value;
+                var temp = match.Groups["inner"].Value;
+                yield return Regex.Replace(temp, @"<.+?>", "");
                 match = match.NextMatch();
             }
         }
